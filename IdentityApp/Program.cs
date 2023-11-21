@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(
     opt=>opt.UseSqlite(builder.Configuration["ConnectionStrings:SQLite_Connection"]));
-builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
 #region IdentityOption
 //Identity configurasyonunu burada yapabilirsiniz
