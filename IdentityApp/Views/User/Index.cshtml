@@ -20,7 +20,7 @@
             <td>@item.FullName</td>
             <td>@item.Email</td>
             <td>
-                <a class="btn btn-primary btn-sm" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                <a class="btn btn-primary btn-sm" asp-route-id="@item.Id" asp-action="Edit" asp-controller="User"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                 <a class="btn btn-danger btn-sm" href="#"><i class="fa-solid fa-trash"></i> Delete</a>
             </td>
         </tr>
