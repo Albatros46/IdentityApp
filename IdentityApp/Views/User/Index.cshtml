@@ -21,7 +21,12 @@
             <td>@item.Email</td>
             <td>
                 <a class="btn btn-primary btn-sm" asp-route-id="@item.Id" asp-action="Edit" asp-controller="User"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                <a class="btn btn-danger btn-sm" href="#"><i class="fa-solid fa-trash"></i> Delete</a>
+                    <form method="post" asp-action="Delete" style="display:inline-block;" onsubmit="return confirm('Emin misiniz?')">
+                        <!--onsubmit="return confirm('Emin misiniz?')" -->
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button>
+                </form>
+                
             </td>
         </tr>
         }
