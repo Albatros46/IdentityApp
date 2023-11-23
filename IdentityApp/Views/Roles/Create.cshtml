@@ -1,0 +1,16 @@
+﻿@model AppRole
+
+<div class="row align-content-center">
+    <div class="col-md-8">
+        <h1 class="h4 align-items-center">User Form</h1>
+        <form asp-action="Create" method="post">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+                <button type="submit" class="btn btn-info"><i class="fa-solid fa-plus"></i> Create</button>
+        </form>
+    </div>
+</div>
