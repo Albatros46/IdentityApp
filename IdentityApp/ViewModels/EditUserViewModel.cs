@@ -18,6 +18,9 @@ namespace IdentityApp.ViewModels
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Parola uyusmuyor!")]//compare karsilastima icin kullanilir parola ile confirmpassword karsilastirma
-        public string? ConfirmPassword { get; set; } 
+        public string? ConfirmPassword { get; set; }
+
+        public IList<string>? SelectedRoles { get; set; }//Eger nullable olmazsa herhangi bir secim yapilmadiginda validation hatasi verir.
+                                                         //Property ismini Edit.cshtml de rol secimi yapilacak olan checckbokx un name kismina yazilir.
     }
 }
