@@ -21,7 +21,7 @@
             <tr>
                 <td>@item.Id </td>
                 <td>@item.Name</td>
-                <td>Kullanicilar</td>
+                <td asp-role-users="@item.Id">Kullanicilar</td><!--TagHelper kullanarak kullaniclari listeleyecegiz.-->
                 <td>
                     <a class="btn btn-primary btn-sm" asp-route-id="@item.Id" asp-action="Edit" asp-controller="Roles"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                     <form method="post" asp-action="Delete" style="display:inline-block;" onsubmit="return confirm('Emin misiniz?')">

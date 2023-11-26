@@ -10,6 +10,8 @@ namespace IdentityApp.ViewModels
 
         [Display(Name ="Full Name")]
         public string FullName { get; set; } = string.Empty; //veya string? seklinde tanimlanir.
+        [Display(Name ="User Name")]
+        public string UserName { get; set; } = string.Empty; //veya string? seklinde tanimlanir.
 
         [Required(ErrorMessage = "E-Mail adres giriniz!")]
         [EmailAddress]
