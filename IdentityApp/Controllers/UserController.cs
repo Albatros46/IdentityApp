@@ -81,7 +81,7 @@ namespace IdentityApp.Controllers
         }
 
         [HttpPost]
-        public async Task< IActionResult> Edit(EditUserViewModel model,string id)
+     public async Task< IActionResult> Edit(EditUserViewModel model,string id)
         {//route den gelen id ile url den gelen id karsilastiracagiz
             if (id!=model.Id)
             {

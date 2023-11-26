@@ -1,0 +1,51 @@
+﻿@model AppRole
+
+<div class="row align-content-center">
+    <div class="col-md-8">
+        <h1 class="h4 align-items-center">Edit Role</h1>
+        <form asp-action="Create" method="post">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-info"><i class="fa-solid fa-plus"></i> Save</button>
+        </form>
+    </div>
+</div>
+
+<table class="table table-sm table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th style="width:300px">@Html.DisplayNameFor(itemModel => itemModel.Id)</th>
+            <th>User Name</th>
+            <th>Full Name</th>
+            <th>E-Mail</th>
+            <th style="width:80px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.Users!=null)
+        {
+          @*   @if (ViewBag.Users.Count() == 0)
+            {
+                <tr><td class="text-center" colspan="4">Kullanici Yok!</td></tr>
+            } *@
+            @foreach (var item in ViewBag.Users)
+            {
+                <tr>
+                    <td>@item.Id </td>
+                    <td>@item.UserName</td>
+                    <td>@item.FullName</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-route-id="@item.Id" asp-action="Edit" asp-controller="User"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                       
+                    </td>
+                </tr>
+            }
+        }
+      
+    </tbody>
+</table>
