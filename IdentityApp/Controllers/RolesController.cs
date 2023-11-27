@@ -1,10 +1,12 @@
 ﻿using IdentityApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace IdentityApp.Controllers
 {
+    [Authorize]//HomeController deki herhangi bir Action a gidebilmek icin Cookie ihtiyac duyulacaktir.
     public class RolesController : Controller
     {//https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.rolemanager-1?view=aspnetcore-7.0
         

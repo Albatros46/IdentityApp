@@ -2,6 +2,9 @@ using IdentityApp.Data;
 using IdentityApp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Buffers.Text;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,8 +30,23 @@ builder.Services.Configure<IdentityOptions>(opt =>
    
 });
 #endregion
-
-
+#region Authentication
+builder.Services.ConfigureApplicationCookie(opt =>
+{//https://learn.microsoft.com/en-us/aspnet/core/signalr/authn-and-authz?view=aspnetcore-8.0
+    opt.LoginPath = "/Account/Login"; //Default degerler yerine baska url de kullanilabilir.
+    opt.AccessDeniedPath = "/";//Belirli bir role sahip olan kullanicilari yetkili olduklari sayfaya yönlendirir. Onun disindaki kullanicilara ise erisiminin olmadigini belirtir.
+    opt.SlidingExpiration = true;
+    opt.ExpireTimeSpan = TimeSpan.FromDays(30);//Bir cookie 30 gün boyunca kayitli olacaktir sinir asimi oldugunda tekrar giris ister. Default deger 14 gündür.
+    
+    /*  Authentication
+    - Cookie Based Authentication : Browser lerde kullanilan.
+    - Token Based Authentication-JWT : Uygulamada üretilen Token Base kullanici her talep ettiginde kullaniciya gönderrilir.
+                                        Json Web Token olarak adlandirlir.Bu tokenn Mobil uygulamalarda kullanilir.
+    - External Provider Authentication : 
+      seklinde 3 yöntemle yapilabilir.
+  */
+});
+#endregion
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,7 +62,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+//Authentication aktifletirmek icin uygulamaya tanimaliyiz.
+app.UseAuthentication();
 app.UseAuthorization();
+
+
 
 app.MapControllerRoute(
     name: "default",

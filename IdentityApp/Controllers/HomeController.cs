@@ -1,9 +1,11 @@
 ﻿using IdentityApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace IdentityApp.Controllers
 {
+    [Authorize]//HomeController deki herhangi bir Action a gidebilmek icin Cookie ihtiyac duyulacaktir.
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

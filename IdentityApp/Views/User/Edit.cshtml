@@ -48,7 +48,11 @@
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input"
                                            id="@role" value="@role" name="SelectedRoles"
-                                    @(Model.SelectedRoles.Any(i => i == role) ? "checked" : "") /><!--SelectedRoles EditUserViewModel e göre yazildi.-->
+                                    @if (Model.SelectedRoles != null)
+                                    {
+                                         @(Model.SelectedRoles.Any(i => i == role) ? "checked" : "") 
+                                        
+                                    } /><!--SelectedRoles EditUserViewModel e göre yazildi.-->
                                     <label class="form-check-label" for="@role">@role</label>
                                 </div>
                             }
